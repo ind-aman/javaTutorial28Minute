@@ -1,34 +1,26 @@
 package com.started.demo;
 
-import com.started.demo.core.IGameConsole;
-import com.started.demo.core.IGameRunner;
+import org.springframework.beans.BeansException;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.started.demo.implementation.PackmanGame;
-import com.started.demo.implementation.GameRunner;
-import com.started.demo.implementation.MarioGame;
-import com.started.demo.implementation.SuperContraGame;
+import com.started.demo.configuration.GameConfiguration;
+import com.started.demo.implementation.records.Address;
 
 
-public class GameApplication {
+
+public class GameApplication{
+	
+	private static <T> void print(String name,T value) {
+		System.out.println(name+": "+value);
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(GameConfiguration.class);
 		
-		IGameConsole game = new PackmanGame();
-		IGameConsole game1 = new MarioGame();
-		IGameConsole game2 = new SuperContraGame();
-		
-		IGameRunner gameRunner = new GameRunner(game);
-		gameRunner.run();
-		
-		gameRunner = new GameRunner(game1);
-		gameRunner.run();
-		
-		gameRunner = new GameRunner(game2);
-		gameRunner.run();
-		
-		
-		
+		print("Name",context.getBean("name"));
+		print("Age",context.getBean("age"));
+		print("Address",context.getBean(Address.class));
+		print("Aadhar",context.getBean("getAadhar"));
 		
 	}
 
