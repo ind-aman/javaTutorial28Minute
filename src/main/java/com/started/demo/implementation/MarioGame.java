@@ -1,7 +1,11 @@
 package com.started.demo.implementation;
 
 import com.started.demo.core.IGameConsole;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
+@Component
+@Primary
 public class MarioGame implements IGameConsole{
 
 	@Override

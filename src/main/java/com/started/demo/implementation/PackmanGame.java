@@ -1,7 +1,9 @@
 package com.started.demo.implementation;
 
 import com.started.demo.core.IGameConsole;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PackmanGame implements IGameConsole {
 
 	@Override
