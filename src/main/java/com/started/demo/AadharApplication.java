@@ -1,12 +1,18 @@
 package com.started.demo;
 
+import com.started.demo.implementation.records.AadharCard;
+import com.started.demo.implementation.records.Address;
+import com.started.demo.implementation.records.PersonalDetail;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.started.demo.configuration.AadharConfiguration;
-import com.started.demo.implementation.records.Address;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 
-
+@Configuration
+@ComponentScan("com.started.demo.implementation.records")
 public class AadharApplication {
 	
 	private static <T> void print(String name,T value) {
@@ -14,13 +20,11 @@ public class AadharApplication {
 	}
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AadharConfiguration.class);
-		
-		print("Name",context.getBean("name"));
-		print("Age",context.getBean("age"));
-		print("Address",context.getBean(Address.class));
-		print("Aadhar",context.getBean("getAadhar"));
-		
-	}
+		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AadharApplication.class);
 
+		Arrays.stream(context.getBeanDefinitionNames()).forEach((res)->{print("Bean Name:",res);});
+
+		System.out.println("\n");
+		context.getBean(AadharCard.class).print();
+	}
 }
