@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PersonalDetail {
+    private final String[] names = {"Alice", "Bob", "Charlie", "David", "Eva", "Frank", "Grace", "Hank", "Ivy", "Jack"};
+
     public String Name;
     public  int Age;
 
@@ -18,8 +20,12 @@ public class PersonalDetail {
 
 
 
+
+
     public  PersonalDetail(String Name, int Age){
         this.Name = Name;
         this.Age = Age;
     }
 }
+
+
